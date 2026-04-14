@@ -83,23 +83,6 @@ export default function HomePage() {
       <section className="editorial-hero">
         <div className="shell-width hero-shell">
           <div className="hero-stage">
-            <p className="eyebrow">tempo, dados e agenda</p>
-            <h1 className="editorial-title">
-              Curadoria do tempo com pulso editorial.
-            </h1>
-            <p className="hero-text">
-              Um home desenhado como revista digital: relogio protagonista,
-              navegacao limpa, superficie sem bordas duras e blocos de
-              ferramentas com peso visual de produto premium.
-            </p>
-            <div className="hero-actions">
-              <Link className="primary-link" href="/que-horas-sao-agora">
-                Ver hora ao vivo
-              </Link>
-              <Link className="secondary-link" href="/calculadora-idade">
-                Explorar calculadora
-              </Link>
-            </div>
             <span className="hero-stage-kicker">SEU ATELIE TEMPORAL</span>
             <GlobalClock variant="hero" />
             <p className="hero-stage-caption">
