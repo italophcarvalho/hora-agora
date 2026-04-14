@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { CityTimesList } from "@/components/layout/CityTimesList";
 import { GlobalClock } from "@/components/layout/GlobalClock";
@@ -16,19 +16,52 @@ export const metadata: Metadata = {
 const featuredTools = [
   {
     href: "/que-horas-sao-agora",
-    title: "Que horas sao agora",
-    description: "Hora atual no seu fuso horario, detectado automaticamente.",
+    title: "Conversor de Fuso",
+    description: "Compare horarios e encontre o ritmo certo entre cidades.",
+    meta: "AO VIVO AGORA",
   },
   {
     href: "/calculadora-idade",
     title: "Calculadora de idade",
-    description: "Calcule anos, meses e dias com um resultado simples e rapido.",
+    description: "Transforme uma data em leitura clara, precisa e elegante.",
+    meta: "CALCULO EDITORIAL",
   },
   {
-    href: "/sobre",
-    title: "Sobre o projeto",
-    description: "Entenda a proposta do site e como vamos expandir as ferramentas.",
+    href: "/privacidade",
+    title: "Guia de feriados",
+    description: "Uma moldura de datas para planejar pausas e janelas de foco.",
+    meta: "CURADORIA",
   },
+  {
+    href: "/contato",
+    title: "Pomodoro Pro",
+    description: "Um compasso de trabalho para estudo, escrita e execucao.",
+    meta: "ROTINA",
+  },
+];
+
+const metrics = [
+  { value: "500+", label: "cidades mapeadas" },
+  { value: "32", label: "fusos observados" },
+  { value: "12M", label: "leituras previstas" },
+  { value: "0ms", label: "atraso visual alvo" },
+];
+
+const categoryRail = [
+  "Fuso",
+  "UTC",
+  "Mercados",
+  "Agenda",
+  "Calendario",
+  "Mapas",
+  "Jet lag",
+  "Planejamento",
+];
+
+const briefs = [
+  "Fusos da Lua Gaia Complete para 2026",
+  "O fim do horario de verao impacta reunioes",
+  "Mercados globais e janelas ideais para operacao",
 ];
 
 export default function HomePage() {
@@ -47,68 +80,137 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <section className="hero-section">
-        <div className="hero-copy">
-          <p className="eyebrow">MVP no ar para validar demanda</p>
-          <h1>
-            Hora certa, ferramentas uteis e base pronta para crescer com SEO.
-          </h1>
-          <p className="hero-text">
-            O Hora Agora estreia com um nucleo enxuto para publicar hoje:
-            relogio em tempo real, pagina de hora atual, calculadora de idade e
-            estrutura pronta para receber novas paginas de fuso, datas e
-            conteudo.
-          </p>
-          <div className="hero-actions">
-            <Link className="primary-link" href="/que-horas-sao-agora">
-              Ver hora atual
-            </Link>
-            <Link className="secondary-link" href="/calculadora-idade">
-              Abrir calculadora de idade
-            </Link>
+      <section className="editorial-hero">
+        <div className="shell-width hero-shell">
+          <div className="hero-text-column">
+            <p className="eyebrow">tempo, dados e agenda</p>
+            <h1 className="editorial-title">
+              Curadoria do tempo com pulso editorial.
+            </h1>
+            <p className="hero-text">
+              Um home desenhado como revista digital: relogio protagonista,
+              navegacao limpa, superficie sem bordas duras e blocos de
+              ferramentas com peso visual de produto premium.
+            </p>
+            <div className="hero-actions">
+              <Link className="primary-link" href="/que-horas-sao-agora">
+                Ver hora ao vivo
+              </Link>
+              <Link className="secondary-link" href="/calculadora-idade">
+                Explorar calculadora
+              </Link>
+            </div>
+          </div>
+
+          <div className="hero-stage">
+            <span className="hero-stage-kicker">SEU ATELIE TEMPORAL</span>
+            <GlobalClock variant="hero" />
+            <p className="hero-stage-caption">
+              Precisao editorial para visualizacao de hora, agenda e previsao.
+            </p>
+            <div className="hero-pill-grid">
+              {featuredTools.map((tool) => (
+                <Link key={tool.title} href={tool.href} className="hero-pill">
+                  <span className="hero-pill-meta">{tool.meta}</span>
+                  <strong>{tool.title}</strong>
+                </Link>
+              ))}
+            </div>
+            <span className="hero-stage-note">
+              Dados locais do navegador, atualizados em tempo real
+            </span>
           </div>
         </div>
-
-        <aside className="hero-panel">
-          <span className="panel-label">Hora do seu dispositivo</span>
-          <GlobalClock variant="hero" />
-          <CityTimesList />
-        </aside>
       </section>
 
-      <section className="content-section">
-        <div className="section-heading">
-          <p className="section-kicker">Backlog de hoje</p>
-          <h2>O que ja esta online no MVP</h2>
-        </div>
-        <div className="tool-grid">
-          {featuredTools.map((tool) => (
-            <Link key={tool.href} href={tool.href} className="tool-card">
-              <h3>{tool.title}</h3>
-              <p>{tool.description}</p>
-            </Link>
+      <section className="category-rail">
+        <div className="shell-width category-rail-row">
+          {categoryRail.map((item) => (
+            <span key={item}>{item}</span>
           ))}
         </div>
       </section>
 
-      <section className="content-section prose-section">
-        <div className="section-heading">
-          <p className="section-kicker">Proximo passo pratico</p>
-          <h2>Publicar cedo e expandir em ciclos curtos</h2>
+      <section className="metrics-section">
+        <div className="shell-width metrics-grid">
+          {metrics.map((item) => (
+            <article key={item.label} className="metric-card">
+              <strong>{item.value}</strong>
+              <span>{item.label}</span>
+            </article>
+          ))}
         </div>
-        <p>
-          Este primeiro corte nao tenta entregar todo o PRD. A ideia aqui e
-          colocar um site limpo, confiavel e indexavel no ar ainda hoje, para
-          que dominio, Search Console, navegacao, branding e paginas legais
-          comecem a trabalhar a seu favor imediatamente.
-        </p>
-        <p>
-          Depois do deploy, as proximas entregas mais naturais sao as paginas
-          de <strong>hora em cidade</strong>, <strong>conversor de fuso</strong>
-          , <strong>calendario</strong> e <strong>feriados</strong>. Elas se
-          conectam bem com a estrutura atual e aumentam o potencial organico sem
-          exigir refazer o layout.
-        </p>
+      </section>
+
+      <section className="editorial-section">
+        <div className="shell-width">
+          <div className="section-heading section-heading-wide">
+            <div>
+              <p className="section-kicker">Curadoria de Precisao</p>
+              <h2>Ferramentas com textura de revista e leitura de produto.</h2>
+            </div>
+            <div className="section-arrows" aria-hidden="true">
+              <span>{"<"}</span>
+              <span>{">"}</span>
+            </div>
+          </div>
+          <div className="tool-grid editorial-grid">
+            {featuredTools.map((tool) => (
+              <Link key={tool.href} href={tool.href} className="tool-card">
+                <span className="tool-card-meta">{tool.meta}</span>
+                <h3>{tool.title}</h3>
+                <p>{tool.description}</p>
+                <span className="tool-card-link">ACESSAR AGORA</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="story-section">
+        <div className="shell-width story-grid">
+          <article className="feature-story-card">
+            <div className="feature-visual">
+              <div className="watch-orb">
+                <div className="watch-core" />
+              </div>
+            </div>
+            <div className="feature-copy">
+              <h3>Por que o tempo e o ativo mais valioso do seculo XXI?</h3>
+              <p>
+                Um bloco editorial grande para abrir espaco a conteudo premium,
+                comparativos e contexto de agenda.
+              </p>
+            </div>
+          </article>
+
+          <article className="briefs-card">
+            {briefs.map((brief) => (
+              <Link key={brief} href="/sobre" className="brief-item">
+                {brief}
+              </Link>
+            ))}
+          </article>
+
+          <aside className="story-side">
+            <div className="aside-card glass-card">
+              <span className="aside-label">Cidades em foco</span>
+              <CityTimesList />
+            </div>
+            <div className="aside-card newsletter-card">
+              <span className="aside-label">Newsletter do Tempo</span>
+              <h3>Insights semanais sobre agenda, fusos e previsao.</h3>
+              <p>
+                Um bloco pronto para capturar interesse sem quebrar a calma do
+                layout editorial.
+              </p>
+              <div className="newsletter-form-shell">
+                <input type="email" placeholder="seu@email.com" />
+                <button type="button">INSCREVER-SE</button>
+              </div>
+            </div>
+          </aside>
+        </div>
       </section>
     </>
   );

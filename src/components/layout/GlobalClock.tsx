@@ -71,9 +71,15 @@ export function GlobalClock({ variant = "bar" }: GlobalClockProps) {
   }
 
   if (variant === "hero") {
+    const [hours = "00", minutes = "00", seconds = "00"] =
+      content.time.split(":");
+
     return (
       <span suppressHydrationWarning className="clock-hero">
-        {content.time}
+        <span className="clock-major">
+          {hours}:{minutes}
+        </span>
+        <span className="clock-minor">{seconds}</span>
       </span>
     );
   }
