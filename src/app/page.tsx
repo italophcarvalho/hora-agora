@@ -83,11 +83,7 @@ export default function HomePage() {
       <section className="editorial-hero">
         <div className="shell-width hero-shell">
           <div className="hero-stage">
-            <span className="hero-stage-kicker">SEU ATELIE TEMPORAL</span>
             <GlobalClock variant="hero" />
-            <p className="hero-stage-caption">
-              Precisao editorial para visualizacao de hora, agenda e previsao.
-            </p>
             <div className="hero-pill-grid">
               {featuredTools.map((tool) => (
                 <Link key={tool.title} href={tool.href} className="hero-pill">
