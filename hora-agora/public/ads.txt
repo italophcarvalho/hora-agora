@@ -1,2 +1,0 @@
-# Ads desativados no lancamento inicial.
-# Quando o AdSense for aprovado, substitua este arquivo pelo publisher ID oficial.
