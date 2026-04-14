@@ -62,20 +62,6 @@ export function Header() {
 
   return (
     <header className={headerClassName}>
-      <div className="precision-strip">
-        <div className="shell-width precision-row">
-          <div className="precision-label-group">
-            <span className="precision-live-dot" aria-hidden="true" />
-            <span className="precision-label">AO VIVO</span>
-          </div>
-          <div className="precision-meta">
-            <BrowserCountry />
-            <BrowserDate />
-            <GlobalClock variant="inline" />
-          </div>
-        </div>
-      </div>
-
       <div className="header-panel-shell">
         <div className="shell-width header-panel">
           <div className="brand-row">
@@ -107,6 +93,20 @@ export function Header() {
                 Entrar
               </Link>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="precision-strip">
+        <div className="shell-width precision-row">
+          <div className="precision-label-group">
+            <span className="precision-live-dot" aria-hidden="true" />
+            <span className="precision-label">AO VIVO</span>
+          </div>
+          <div className="precision-meta">
+            <BrowserCountry />
+            <BrowserDate />
+            <GlobalClock variant="inline" />
           </div>
         </div>
       </div>
