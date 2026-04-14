@@ -82,7 +82,7 @@ export default function HomePage() {
       />
       <section className="editorial-hero">
         <div className="shell-width hero-shell">
-          <div className="hero-text-column">
+          <div className="hero-stage">
             <p className="eyebrow">tempo, dados e agenda</p>
             <h1 className="editorial-title">
               Curadoria do tempo com pulso editorial.
@@ -100,9 +100,6 @@ export default function HomePage() {
                 Explorar calculadora
               </Link>
             </div>
-          </div>
-
-          <div className="hero-stage">
             <span className="hero-stage-kicker">SEU ATELIE TEMPORAL</span>
             <GlobalClock variant="hero" />
             <p className="hero-stage-caption">

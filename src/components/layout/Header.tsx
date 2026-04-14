@@ -1,4 +1,8 @@
 import Link from "next/link";
+import {
+  BrowserCountry,
+  BrowserDate,
+} from "@/components/layout/BrowserCountry";
 import { GlobalClock } from "@/components/layout/GlobalClock";
 
 const navLinks = [
@@ -15,12 +19,7 @@ export function Header() {
         <div className="brand-row">
           <Link href="/" className="brand-link">
             <span className="brand-mark" aria-hidden="true" />
-            <span>
-              <strong className="brand-name">Hora Agora</strong>
-              <span className="brand-subtitle">
-                Curadoria editorial do tempo
-              </span>
-            </span>
+            <strong className="brand-name">Hora Agora</strong>
           </Link>
 
           <nav className="main-nav" aria-label="Principal">
@@ -56,8 +55,8 @@ export function Header() {
             <span className="precision-label">AO VIVO</span>
           </div>
           <div className="precision-meta">
-            <span>FUSO BRASIL</span>
-            <span>TERCA, 14 DE ABR DE 2026</span>
+            <BrowserCountry />
+            <BrowserDate />
             <GlobalClock variant="inline" />
           </div>
         </div>

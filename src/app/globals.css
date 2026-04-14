@@ -97,19 +97,10 @@ input {
 }
 
 .brand-name {
-  display: block;
+  display: inline-block;
   font-family: var(--font-serif), Georgia, serif;
   font-size: 1.3rem;
   line-height: 1;
-}
-
-.brand-subtitle {
-  display: block;
-  margin-top: 0.22rem;
-  font-size: 0.76rem;
-  color: var(--text-faint);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
 }
 
 .main-nav {
@@ -229,6 +220,14 @@ input {
   color: rgba(255, 255, 255, 0.62);
 }
 
+.precision-country {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.precision-date {
+  color: rgba(255, 255, 255, 0.62);
+}
+
 .clock-inline {
   color: rgba(255, 255, 255, 0.92);
   font-family: var(--font-mono), monospace;
@@ -279,16 +278,9 @@ input {
 }
 
 .hero-shell {
-  display: grid;
-  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
-  gap: 2rem;
-  align-items: center;
+  display: flex;
+  justify-content: center;
   min-height: 600px;
-}
-
-.hero-text-column {
-  align-self: end;
-  padding-bottom: 4rem;
 }
 
 .eyebrow,
@@ -358,7 +350,7 @@ input {
 }
 
 .hero-text {
-  max-width: 30rem;
+  max-width: 42rem;
   color: rgba(255, 255, 255, 0.74);
 }
 
@@ -392,7 +384,10 @@ input {
   display: grid;
   justify-items: center;
   text-align: center;
-  gap: 1rem;
+  gap: 1.15rem;
+  width: min(100%, 980px);
+  margin: 0 auto;
+  padding: 3.8rem 0 2.2rem;
 }
 
 .hero-stage-kicker {
@@ -429,11 +424,11 @@ input {
 }
 
 .hero-pill-grid {
-  width: 100%;
+  width: min(100%, 920px);
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.9rem;
-  margin-top: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.2rem;
 }
 
 .hero-pill {
@@ -1001,15 +996,10 @@ input {
     flex: 1 1 220px;
   }
 
-  .hero-shell,
   .calculator-form,
   .calculator-results,
   .metrics-grid {
     grid-template-columns: 1fr;
-  }
-
-  .hero-text-column {
-    padding-bottom: 0;
   }
 }
 
