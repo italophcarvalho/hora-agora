@@ -89,12 +89,12 @@ export default function HomePage() {
                 <Link key={tool.title} href={tool.href} className="hero-pill">
                   <span className="hero-pill-meta">{tool.meta}</span>
                   <strong>{tool.title}</strong>
+                  <span className="hero-pill-description">
+                    {tool.description}
+                  </span>
                 </Link>
               ))}
             </div>
-            <span className="hero-stage-note">
-              Dados locais do navegador, atualizados em tempo real
-            </span>
           </div>
         </div>
       </section>

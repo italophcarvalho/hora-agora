@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 type GlobalClockVariant = "bar" | "inline" | "hero";
 
@@ -15,17 +15,15 @@ interface ClockState {
 }
 
 const initialState: ClockState = {
-  time: "00:00:00",
+  time: "--:--:--",
   date: "",
   zone: "UTC",
 };
 
 export function GlobalClock({ variant = "bar" }: GlobalClockProps) {
   const [clock, setClock] = useState<ClockState>(initialState);
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
 
     const updateClock = () => {
@@ -54,25 +52,17 @@ export function GlobalClock({ variant = "bar" }: GlobalClockProps) {
     return () => window.clearInterval(intervalId);
   }, []);
 
-  const content = useMemo(() => {
-    if (!mounted) {
-      return initialState;
-    }
-
-    return clock;
-  }, [clock, mounted]);
-
   if (variant === "inline") {
     return (
       <span suppressHydrationWarning className="clock-inline">
-        {content.time}
+        {clock.time}
       </span>
     );
   }
 
   if (variant === "hero") {
     const [hours = "00", minutes = "00", seconds = "00"] =
-      content.time.split(":");
+      clock.time.split(":");
 
     return (
       <span suppressHydrationWarning className="clock-hero">
@@ -88,10 +78,10 @@ export function GlobalClock({ variant = "bar" }: GlobalClockProps) {
     <div suppressHydrationWarning className="clock-bar" aria-live="polite">
       <div className="clock-meta">
         <span className="clock-dot" aria-hidden="true" />
-        <strong className="clock-time">{content.time}</strong>
-        <span className="clock-zone">{content.zone}</span>
+        <strong className="clock-time">{clock.time}</strong>
+        <span className="clock-zone">{clock.zone}</span>
       </div>
-      <span className="clock-date">{content.date}</span>
+      <span className="clock-date">{clock.date || "Data local"}</span>
     </div>
   );
 }

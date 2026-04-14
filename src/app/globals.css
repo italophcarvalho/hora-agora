@@ -72,27 +72,23 @@ input {
   position: sticky;
   top: 0;
   z-index: 59;
-  padding-top: 0.45rem;
+  padding-top: 0;
   transition:
     transform 220ms ease,
     opacity 220ms ease;
 }
 
 .header-panel {
-  padding: 0.8rem 1rem 0.7rem;
-  border-radius: 1.35rem;
-  background: rgba(247, 247, 251, 0.62);
-  backdrop-filter: blur(16px) saturate(135%);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.82),
-    0 12px 32px rgba(20, 18, 24, 0.1);
+  padding: 0.8rem 0 0.7rem;
+  border-radius: 0;
+  background: #f7f7fb;
+  backdrop-filter: none;
+  box-shadow: none;
 }
 
-.site-header.is-scrolled .header-panel {
-  background: rgba(247, 247, 251, 0.54);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.72),
-    0 16px 36px rgba(20, 18, 24, 0.12);
+.site-header.is-lifted .header-panel {
+  background: #f7f7fb;
+  box-shadow: none;
 }
 
 .site-header.is-header-hidden .header-panel-shell {
@@ -149,14 +145,15 @@ input {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  justify-content: flex-end;
+  min-width: 320px;
 }
 
 .search-shell {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  min-width: 220px;
+  width: min(100%, 320px);
   height: 2.45rem;
   padding: 0 0.95rem;
   border-radius: 999px;
@@ -182,7 +179,6 @@ input {
   color: var(--text-faint);
 }
 
-.header-cta,
 .primary-link,
 .newsletter-form-shell button {
   display: inline-flex;
@@ -199,10 +195,8 @@ input {
   transition: transform 180ms ease, filter 180ms ease;
 }
 
-.header-cta:hover,
 .primary-link:hover,
 .newsletter-form-shell button:hover,
-.header-cta:focus-visible,
 .primary-link:focus-visible,
 .newsletter-form-shell button:focus-visible {
   transform: translateY(-1px);
@@ -399,7 +393,7 @@ input {
   justify-items: center;
   text-align: center;
   align-content: center;
-  gap: 1.1rem;
+  gap: 1.35rem;
   width: min(100%, 1160px);
   margin: 0 auto;
   padding: 0.5rem 0 0.6rem;
@@ -408,22 +402,24 @@ input {
 .clock-hero {
   display: inline-flex;
   align-items: flex-start;
-  gap: 0.45rem;
+  gap: 1.7rem;
   color: #fff7ea;
 }
 
 .clock-major {
   font-family: var(--font-serif), Georgia, serif;
   font-style: italic;
-  font-size: clamp(5.6rem, 13vw, 9.4rem);
+  font-size: clamp(6.9rem, 15.5vw, 11.6rem);
   line-height: 0.88;
   letter-spacing: -0.06em;
 }
 
 .clock-minor {
-  padding-top: 1.2rem;
-  font-family: var(--font-mono), monospace;
-  font-size: clamp(1.4rem, 3.5vw, 2.6rem);
+  padding-top: 1.5rem;
+  padding-left: 0.4rem;
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.9rem, 4.6vw, 3.4rem);
   line-height: 1;
   color: rgba(201, 150, 42, 0.88);
   opacity: 0.56;
@@ -434,18 +430,21 @@ input {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
-  margin-top: 0.4rem;
+  margin-top: 3rem;
 }
 
 .hero-pill {
-  min-height: 5rem;
-  padding: 1rem 1.05rem;
+  min-height: 10.5rem;
+  padding: 1.25rem 1.15rem 1.35rem;
   border-radius: 1.1rem;
   background: rgba(255, 255, 255, 0.1);
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.08),
     0 14px 28px rgba(0, 0, 0, 0.12);
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   transition: transform 180ms ease, background-color 180ms ease;
 }
 
@@ -457,7 +456,7 @@ input {
 
 .hero-pill-meta {
   display: block;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.5rem;
   font-size: 0.68rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -466,8 +465,18 @@ input {
 
 .hero-pill strong {
   font-size: 1.12rem;
+  line-height: 1.2;
   font-weight: 600;
   color: #fff8f0;
+}
+
+.hero-pill-description {
+  display: block;
+  margin-top: 0.8rem;
+  max-width: 18ch;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.92rem;
+  line-height: 1.45;
 }
 
 .hero-stage-note {
@@ -1043,7 +1052,7 @@ input {
   }
 
   .header-panel {
-    padding-inline: 0.85rem;
+    padding-inline: 0;
   }
 
   .hero-pill-grid,

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
   BrowserCountry,
@@ -17,7 +17,8 @@ const navLinks = [
 
 export function Header() {
   const [isVisible, setIsVisible] = useState(true);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isLifted, setIsLifted] = useState(false);
+  const liftTimeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
     let lastY = window.scrollY;
@@ -26,10 +27,9 @@ export function Header() {
       const currentY = window.scrollY;
       const delta = currentY - lastY;
 
-      setIsScrolled(currentY > 24);
-
       if (currentY <= 24) {
         setIsVisible(true);
+        setIsLifted(false);
         lastY = currentY;
         return;
       }
@@ -40,8 +40,18 @@ export function Header() {
 
       if (delta > 0) {
         setIsVisible(false);
+        setIsLifted(false);
       } else {
         setIsVisible(true);
+        setIsLifted(true);
+
+        if (liftTimeoutRef.current) {
+          window.clearTimeout(liftTimeoutRef.current);
+        }
+
+        liftTimeoutRef.current = window.setTimeout(() => {
+          setIsLifted(false);
+        }, 180);
       }
 
       lastY = currentY;
@@ -49,12 +59,18 @@ export function Header() {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+
+      if (liftTimeoutRef.current) {
+        window.clearTimeout(liftTimeoutRef.current);
+      }
+    };
   }, []);
 
   const headerClassName = [
     "site-header",
-    isScrolled ? "is-scrolled" : "",
+    isLifted ? "is-lifted" : "",
     isVisible ? "is-header-visible" : "is-header-hidden",
   ]
     .filter(Boolean)
@@ -89,9 +105,6 @@ export function Header() {
                   className="search-input"
                 />
               </label>
-              <Link href="/contato" className="header-cta">
-                Entrar
-              </Link>
             </div>
           </div>
         </div>

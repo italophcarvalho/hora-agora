@@ -74,8 +74,9 @@ export default function RootLayout({
     <html
       lang="pt-BR"
       className={`${dmSans.variable} ${dmSerif.variable} ${dmMono.variable}`}
+      suppressHydrationWarning
     >
-      <body>
+      <body suppressHydrationWarning>
         {gaId ? (
           <>
             <Script

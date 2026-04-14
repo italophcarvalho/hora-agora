@@ -49,7 +49,7 @@ function resolveRegionFromBrowser() {
 }
 
 export function BrowserCountry() {
-  const [country, setCountry] = useState("Brasil");
+  const [country, setCountry] = useState("");
 
   useEffect(() => {
     const region = resolveRegionFromBrowser();
@@ -64,7 +64,7 @@ export function BrowserCountry() {
 
   return (
     <span suppressHydrationWarning className="precision-country">
-      {country}
+      {country || "Pais"}
     </span>
   );
 }
@@ -94,7 +94,7 @@ export function BrowserDate() {
 
   return (
     <span suppressHydrationWarning className="precision-date">
-      {dateLabel || "Carregando data"}
+      {dateLabel || "Data local"}
     </span>
   );
 }
