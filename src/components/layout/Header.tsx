@@ -10,7 +10,7 @@ import { GlobalClock } from "@/components/layout/GlobalClock";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/que-horas-sao-agora", label: "Fuso Horario" },
+  { href: "/converter-fuso", label: "Fuso Horario" },
   { href: "/calculadora-idade", label: "Calculadora" },
   { href: "/sobre", label: "Blog" },
 ];

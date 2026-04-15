@@ -6,6 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     "",
     "/que-horas-sao-agora",
+    "/converter-fuso",
     "/calculadora-idade",
     "/sobre",
     "/privacidade",

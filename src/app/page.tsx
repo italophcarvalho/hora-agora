@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const featuredTools = [
   {
-    href: "/que-horas-sao-agora",
+    href: "/converter-fuso",
     title: "Conversor de Fuso",
     description: "Compare horarios e encontre o ritmo certo entre cidades.",
     meta: "AO VIVO AGORA",
