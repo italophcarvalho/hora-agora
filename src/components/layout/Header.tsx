@@ -8,6 +8,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/converter-fuso", label: "Fuso Horario" },
   { href: "/calendario", label: "Calendario" },
+  { href: "/guia-feriados", label: "Feriados" },
   { href: "/calculadora-idade", label: "Calculadora" },
   { href: "/sobre", label: "Blog" },
 ];

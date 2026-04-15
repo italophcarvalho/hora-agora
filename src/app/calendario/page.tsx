@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { CalendarExplorer } from "@/components/tools/CalendarExplorer";
 import { HolidayCountryPicker } from "@/components/tools/HolidayCountryPicker";
+import { brazilNationalHolidays } from "@/lib/holiday-data";
+import { getUpcomingHolidays } from "@/lib/holiday-utils";
 import { getSiteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -30,60 +32,14 @@ const faqItems = [
   },
 ];
 
-const brazilNationalHolidays = [
-  {
-    date: "01 jan 2026",
-    label: "Confraternizacao Universal",
-    note: "Abre o calendario civil do ano.",
-  },
-  {
-    date: "03 abr 2026",
-    label: "Paixao de Cristo",
-    note: "Data movel do calendario religioso.",
-  },
-  {
-    date: "21 abr 2026",
-    label: "Tiradentes",
-    note: "Feriado nacional civico.",
-  },
-  {
-    date: "01 maio 2026",
-    label: "Dia do Trabalho",
-    note: "Data nacional do trabalho.",
-  },
-  {
-    date: "07 set 2026",
-    label: "Independencia do Brasil",
-    note: "Marco civico nacional.",
-  },
-  {
-    date: "12 out 2026",
-    label: "Nossa Senhora Aparecida",
-    note: "Padroeira do Brasil.",
-  },
-  {
-    date: "02 nov 2026",
-    label: "Finados",
-    note: "Feriado nacional.",
-  },
-  {
-    date: "15 nov 2026",
-    label: "Proclamacao da Republica",
-    note: "Marco civico nacional.",
-  },
-  {
-    date: "20 nov 2026",
-    label: "Dia da Consciencia Negra",
-    note: "Feriado nacional.",
-  },
-  {
-    date: "25 dez 2026",
-    label: "Natal",
-    note: "Encerramento do ano civil.",
-  },
-];
-
 export default function CalendarPage() {
+  const referenceDate = new Date();
+  const referenceDateIso = referenceDate.toISOString();
+  const upcomingBrazilHolidays = getUpcomingHolidays(
+    brazilNationalHolidays,
+    referenceDate,
+  );
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -124,7 +80,7 @@ export default function CalendarPage() {
           </div>
 
           <div className="holiday-list">
-            {brazilNationalHolidays.map((holiday) => (
+            {upcomingBrazilHolidays.map((holiday) => (
               <article key={holiday.date} className="holiday-item">
                 <strong>{holiday.date}</strong>
                 <div>
@@ -136,7 +92,7 @@ export default function CalendarPage() {
           </div>
         </section>
 
-        <HolidayCountryPicker />
+        <HolidayCountryPicker referenceDateIso={referenceDateIso} />
       </section>
 
       <section className="legal-card">

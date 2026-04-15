@@ -22,6 +22,7 @@ export function Footer() {
           <h3>Navegacao</h3>
           <div className="footer-links">
             <Link href="/que-horas-sao-agora">Fuso Horario</Link>
+            <Link href="/guia-feriados">Guia de feriados</Link>
             <Link href="/calculadora-idade">Calculadora de idade</Link>
             <Link href="/sobre">Blog editorial</Link>
           </div>

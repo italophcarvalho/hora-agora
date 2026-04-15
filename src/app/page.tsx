@@ -1,8 +1,8 @@
 ﻿import type { Metadata } from "next";
 import Link from "next/link";
-import { CityTimesList } from "@/components/layout/CityTimesList";
+import { GlobalHoursTicker } from "@/components/layout/GlobalHoursTicker";
 import { GlobalClock } from "@/components/layout/GlobalClock";
-import { cityPages, getSiteUrl, siteConfig } from "@/lib/site";
+import { getSiteUrl, siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Hora Agora no Brasil e no Mundo",
@@ -33,38 +33,12 @@ const featuredTools = [
     meta: "CURADORIA",
   },
   {
-    href: "/contato",
-    title: "Pomodoro Pro",
-    description: "Um compasso de trabalho para estudo, escrita e execucao.",
-    meta: "ROTINA",
+    href: "/guia-feriados",
+    title: "Guia de feriados",
+    description: "Compare proximos feriados e leia a agenda anual de cada pais.",
+    meta: "AGENDA GLOBAL",
   },
 ];
-
-const metrics = [
-  { value: "500+", label: "cidades mapeadas" },
-  { value: "32", label: "fusos observados" },
-  { value: "12M", label: "leituras previstas" },
-  { value: "0ms", label: "atraso visual alvo" },
-];
-
-const categoryRail = [
-  "Fuso",
-  "UTC",
-  "Mercados",
-  "Agenda",
-  "Calendario",
-  "Mapas",
-  "Jet lag",
-  "Planejamento",
-];
-
-const briefs = [
-  "Fusos da Lua Gaia Complete para 2026",
-  "O fim do horario de verao impacta reunioes",
-  "Mercados globais e janelas ideais para operacao",
-];
-
-const popularCityPages = cityPages.slice(0, 6);
 
 export default function HomePage() {
   const schema = {
@@ -101,118 +75,34 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="category-rail">
-        <div className="shell-width category-rail-row">
-          {categoryRail.map((item) => (
-            <span key={item}>{item}</span>
-          ))}
-        </div>
-      </section>
+      <GlobalHoursTicker />
 
-      <section className="metrics-section">
-        <div className="shell-width metrics-grid">
-          {metrics.map((item) => (
-            <article key={item.label} className="metric-card">
-              <strong>{item.value}</strong>
-              <span>{item.label}</span>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="editorial-section">
-        <div className="shell-width">
-          <div className="section-heading section-heading-wide">
-            <div>
-              <p className="section-kicker">Curadoria de Precisao</p>
-              <h2>Ferramentas com textura de revista e leitura de produto.</h2>
-            </div>
-            <div className="section-arrows" aria-hidden="true">
-              <span>{"<"}</span>
-              <span>{">"}</span>
-            </div>
-          </div>
-          <div className="tool-grid editorial-grid">
-            {featuredTools.map((tool) => (
-              <Link key={tool.href} href={tool.href} className="tool-card">
-                <span className="tool-card-meta">{tool.meta}</span>
-                <h3>{tool.title}</h3>
-                <p>{tool.description}</p>
-                <span className="tool-card-link">ACESSAR AGORA</span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="story-section">
-        <div className="shell-width story-grid">
-          <article className="feature-story-card">
-            <div className="feature-visual">
-              <div className="watch-orb">
-                <div className="watch-core" />
-              </div>
-            </div>
-            <div className="feature-copy">
-              <h3>Por que o tempo e o ativo mais valioso do seculo XXI?</h3>
+      <section className="home-newsletter-section">
+        <div className="shell-width home-newsletter-shell">
+          <div className="home-newsletter-card">
+            <div className="home-newsletter-copy">
+              <p className="section-kicker">Newsletter do Tempo</p>
+              <h2>
+                Receba leituras curtas sobre horario, agenda global e janelas de
+                operacao.
+              </h2>
               <p>
-                Um bloco editorial grande para abrir espaco a conteudo premium,
-                comparativos e contexto de agenda.
+                Uma secao final objetiva para quem quiser acompanhar o projeto,
+                sem competir com o hero nem carregar a home com blocos extras.
               </p>
             </div>
-          </article>
 
-          <article className="briefs-card">
-            {briefs.map((brief) => (
-              <Link key={brief} href="/sobre" className="brief-item">
-                {brief}
-              </Link>
-            ))}
-          </article>
-
-          <aside className="story-side">
-            <div className="aside-card glass-card">
-              <span className="aside-label">Cidades em foco</span>
-              <CityTimesList />
-            </div>
-            <div className="aside-card newsletter-card">
-              <span className="aside-label">Newsletter do Tempo</span>
-              <h3>Insights semanais sobre agenda, fusos e previsao.</h3>
-              <p>
-                Um bloco pronto para capturar interesse sem quebrar a calma do
-                layout editorial.
-              </p>
-              <div className="newsletter-form-shell">
-                <input type="email" placeholder="seu@email.com" />
-                <button type="button">INSCREVER-SE</button>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      <section className="city-pages-section">
-        <div className="shell-width">
-          <div className="section-heading section-heading-wide">
-            <div>
-              <p className="section-kicker">Cidades Populares</p>
-              <h2>Hora em cidades estrategicas para agenda e operacao global.</h2>
-            </div>
-          </div>
-
-          <div className="city-pages-grid">
-            {popularCityPages.map((city) => (
-              <Link
-                key={city.slug}
-                href={`/hora-em/${city.slug}`}
-                className="city-page-teaser"
-              >
-                <span className="tool-card-meta">{city.country}</span>
-                <h3>{city.name}</h3>
-                <p>{city.marketRole}</p>
-                <span className="tool-card-link">VER HORA LOCAL</span>
-              </Link>
-            ))}
+            <form className="home-newsletter-form">
+              <label>
+                Nome
+                <input type="text" placeholder="Seu nome" />
+              </label>
+              <label>
+                E-mail
+                <input type="email" placeholder="voce@email.com" />
+              </label>
+              <button type="submit">INSCREVER-SE</button>
+            </form>
           </div>
         </div>
       </section>

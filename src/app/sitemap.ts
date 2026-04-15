@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/que-horas-sao-agora",
     "/converter-fuso",
     "/calendario",
+    "/guia-feriados",
     "/calculadora-idade",
     "/sobre",
     "/privacidade",

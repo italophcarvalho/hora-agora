@@ -126,9 +126,6 @@ export function CalendarExplorer() {
         </article>
       </div>
 
-      <div className="calendar-roadmap-note">
-        Proxima expansao anotada: lista de feriados de todos os paises.
-      </div>
     </section>
   );
 }
