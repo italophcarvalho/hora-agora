@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { CityTimesList } from "@/components/layout/CityTimesList";
 import { GlobalClock } from "@/components/layout/GlobalClock";
-import { getSiteUrl, siteConfig } from "@/lib/site";
+import { cityPages, getSiteUrl, siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Hora Agora no Brasil e no Mundo",
@@ -27,9 +27,9 @@ const featuredTools = [
     meta: "CALCULO EDITORIAL",
   },
   {
-    href: "/privacidade",
-    title: "Guia de feriados",
-    description: "Uma moldura de datas para planejar pausas e janelas de foco.",
+    href: "/calendario",
+    title: "Calendario mensal",
+    description: "Uma moldura de datas para planejar pausas, agenda e ciclos.",
     meta: "CURADORIA",
   },
   {
@@ -63,6 +63,8 @@ const briefs = [
   "O fim do horario de verao impacta reunioes",
   "Mercados globais e janelas ideais para operacao",
 ];
+
+const popularCityPages = cityPages.slice(0, 6);
 
 export default function HomePage() {
   const schema = {
@@ -186,6 +188,32 @@ export default function HomePage() {
               </div>
             </div>
           </aside>
+        </div>
+      </section>
+
+      <section className="city-pages-section">
+        <div className="shell-width">
+          <div className="section-heading section-heading-wide">
+            <div>
+              <p className="section-kicker">Cidades Populares</p>
+              <h2>Hora em cidades estrategicas para agenda e operacao global.</h2>
+            </div>
+          </div>
+
+          <div className="city-pages-grid">
+            {popularCityPages.map((city) => (
+              <Link
+                key={city.slug}
+                href={`/hora-em/${city.slug}`}
+                className="city-page-teaser"
+              >
+                <span className="tool-card-meta">{city.country}</span>
+                <h3>{city.name}</h3>
+                <p>{city.marketRole}</p>
+                <span className="tool-card-link">VER HORA LOCAL</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
     </>

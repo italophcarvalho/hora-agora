@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FooterLocalCity } from "@/components/layout/FooterLocalCity";
 import { GlobalClock } from "@/components/layout/GlobalClock";
 
 export function Footer() {
@@ -36,7 +37,7 @@ export function Footer() {
         <section>
           <h3>Hora Local</h3>
           <div className="footer-clock-card">
-            <span className="footer-clock-label">BRASIL AO VIVO</span>
+            <FooterLocalCity />
             <GlobalClock variant="inline" />
           </div>
         </section>

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getSiteUrl } from "@/lib/site";
+import { cityPages, getSiteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = getSiteUrl();
@@ -7,10 +7,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/que-horas-sao-agora",
     "/converter-fuso",
+    "/calendario",
     "/calculadora-idade",
     "/sobre",
     "/privacidade",
     "/contato",
+    ...cityPages.map((city) => `/hora-em/${city.slug}`),
   ];
 
   return routes.map((route) => ({

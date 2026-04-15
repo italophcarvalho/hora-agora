@@ -252,6 +252,7 @@ input {
   display: inline-flex;
   align-items: center;
   gap: 1rem;
+  flex-wrap: wrap;
   color: rgba(255, 255, 255, 0.74);
 }
 
@@ -514,7 +515,8 @@ input {
 
 .metrics-section,
 .editorial-section,
-.story-section {
+.story-section,
+.city-pages-section {
   padding-top: 2.2rem;
 }
 
@@ -758,6 +760,42 @@ input {
   box-shadow: var(--shadow-dark);
 }
 
+.city-pages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+.city-page-teaser {
+  min-height: 14.5rem;
+  padding: 1.4rem;
+  border-radius: 1.5rem;
+  background: linear-gradient(180deg, #fff, #faf8fb);
+  box-shadow: var(--shadow);
+  display: grid;
+  align-content: start;
+  gap: 0.75rem;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.city-page-teaser h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.08;
+}
+
+.city-page-teaser p {
+  color: var(--text-soft);
+}
+
+.city-page-teaser:hover,
+.city-page-teaser:focus-visible {
+  transform: translateY(-3px);
+  box-shadow:
+    var(--shadow),
+    0 18px 28px rgba(27, 27, 29, 0.08);
+}
+
 .newsletter-card h3 {
   margin: 0.5rem 0 0;
   font-size: 1.8rem;
@@ -989,6 +1027,246 @@ input {
   color: rgba(255, 255, 255, 0.42);
 }
 
+.calendar-card {
+  display: grid;
+  gap: 1rem;
+}
+
+.calendar-shell {
+  padding: 1rem;
+  border-radius: 1.2rem;
+  background: var(--surface-low);
+}
+
+.calendar-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.calendar-nav-button {
+  min-height: 2.5rem;
+  padding: 0 1rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--text);
+  color: #fff;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.calendar-nav-button:hover,
+.calendar-nav-button:focus-visible {
+  transform: translateY(-1px);
+  opacity: 0.92;
+}
+
+.calendar-month-label {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  line-height: 1;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.calendar-weekday {
+  text-align: center;
+  color: var(--text-faint);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  border: 0;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--text);
+  box-shadow: inset 0 0 0 1px rgba(27, 27, 29, 0.05);
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.calendar-day:hover,
+.calendar-day:focus-visible {
+  transform: translateY(-1px);
+}
+
+.calendar-day.is-outside-month {
+  color: var(--text-faint);
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.calendar-day.is-selected {
+  background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+  color: var(--ink-soft);
+  box-shadow: none;
+}
+
+.calendar-day.is-today {
+  box-shadow: inset 0 0 0 2px rgba(201, 150, 42, 0.38);
+}
+
+.calendar-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.calendar-summary-card {
+  padding: 1.15rem;
+  border-radius: 1.2rem;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(27, 27, 29, 0.05);
+}
+
+.calendar-summary-card span {
+  color: var(--text-faint);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.calendar-summary-card strong {
+  display: block;
+  margin-top: 0.55rem;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.05;
+}
+
+.calendar-summary-card p {
+  margin: 0.7rem 0 0;
+  color: var(--text-soft);
+  line-height: 1.5;
+}
+
+.calendar-roadmap-note {
+  padding: 1rem 1.1rem;
+  border-radius: 1rem;
+  background: rgba(201, 150, 42, 0.12);
+  color: var(--text);
+}
+
+.holiday-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 1.2rem;
+  align-items: start;
+  margin-top: 1.2rem;
+}
+
+.holiday-columns > .holiday-section-card,
+.holiday-columns > .holiday-country-card {
+  margin-top: 0;
+  height: 100%;
+}
+
+.holiday-section-card,
+.holiday-country-card {
+  margin-top: 1.2rem;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  background: linear-gradient(180deg, #fff, #faf8fb);
+  box-shadow: var(--shadow);
+}
+
+.holiday-section-heading {
+  margin-bottom: 1rem;
+}
+
+.holiday-section-heading h2,
+.holiday-country-header h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: var(--gold);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.holiday-country-header {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  align-items: start;
+}
+
+.holiday-country-select {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.7rem;
+  min-width: 0;
+  max-width: 250px;
+  color: var(--text-soft);
+}
+
+.holiday-country-select span {
+  white-space: nowrap;
+}
+
+.holiday-country-select select {
+  height: 2.15rem;
+  width: 100%;
+  padding: 0 0.75rem;
+  border: 0;
+  border-radius: 0.85rem;
+  outline: none;
+  background: var(--surface-low);
+  color: var(--text);
+  box-shadow: inset 4px 0 0 transparent;
+}
+
+.holiday-country-select select:focus-visible {
+  box-shadow: inset 4px 0 0 var(--gold);
+}
+
+.holiday-list {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.holiday-item {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.38fr) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+  padding: 1rem 1.1rem;
+  border-radius: 1.2rem;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(27, 27, 29, 0.05);
+}
+
+.holiday-item strong {
+  color: var(--gold);
+  font-family: var(--font-mono), monospace;
+  font-size: 1rem;
+}
+
+.holiday-item h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  line-height: 1.2;
+}
+
+.holiday-item p {
+  margin: 0.45rem 0 0;
+  color: var(--text-soft);
+  line-height: 1.5;
+}
+
 .world-hubs-section {
   min-height: calc(100svh - 6.9rem);
   padding: 3.2rem 0;
@@ -1048,6 +1326,169 @@ input {
   color: var(--text-soft);
   line-height: 1.45;
   font-size: 0.96rem;
+}
+
+.city-time-hero {
+  min-height: calc(100svh - 6.9rem);
+  padding: 1rem 0;
+  background:
+    radial-gradient(circle at 54% 30%, rgba(201, 150, 42, 0.22), transparent 22%),
+    radial-gradient(circle at 58% 46%, rgba(201, 150, 42, 0.1), transparent 34%),
+    linear-gradient(180deg, #131315 0%, #0d0d0f 100%);
+  color: #f7f5ef;
+  display: flex;
+  align-items: center;
+}
+
+.city-time-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  gap: 1rem;
+  align-items: center;
+}
+
+.city-time-stage h1 {
+  margin: 0.45rem 0 0;
+  font-size: clamp(3.8rem, 7vw, 7rem);
+  line-height: 0.9;
+  color: #fffef8;
+}
+
+.city-time-subtitle {
+  margin: 0.6rem 0 0;
+  max-width: 42rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+}
+
+.city-clock-card {
+  width: min(100%, 36rem);
+  margin-top: 1.2rem;
+  padding: 1.4rem 1.5rem;
+  border-radius: 1.6rem;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(201, 150, 42, 0.18), transparent 26%),
+    linear-gradient(180deg, #17171a, #101013);
+  box-shadow: var(--shadow-dark);
+}
+
+.city-clock-time {
+  display: block;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(4rem, 8vw, 7.4rem);
+  line-height: 0.88;
+  letter-spacing: -0.06em;
+  color: #fff7ea;
+}
+
+.city-clock-date {
+  margin: 0.8rem 0 0;
+  color: rgba(255, 255, 255, 0.68);
+  line-height: 1.55;
+}
+
+.city-clock-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+
+.city-clock-meta span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0 0.8rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.74);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.city-info-panel {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.city-info-card {
+  padding: 1.15rem;
+  border-radius: 1.4rem;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.city-info-card strong {
+  display: block;
+  margin-top: 0.55rem;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1;
+  color: #fff8f0;
+}
+
+.city-info-card p {
+  margin: 0.75rem 0 0;
+  color: rgba(255, 255, 255, 0.66);
+  line-height: 1.55;
+}
+
+.city-page-section {
+  padding: 1.4rem 0 0;
+}
+
+.city-page-stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.city-page-block {
+  padding: 1.5rem;
+  border-radius: 1.6rem;
+  background: linear-gradient(180deg, #fff, #faf8fb);
+  box-shadow: var(--shadow);
+}
+
+.city-page-grid,
+.city-links-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.city-page-card,
+.city-link-card {
+  padding: 1.2rem;
+  border-radius: 1.25rem;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(27, 27, 29, 0.05);
+}
+
+.city-page-card strong,
+.city-link-card h3 {
+  display: block;
+  margin-top: 0.65rem;
+  font-size: 1.5rem;
+  line-height: 1.04;
+  color: var(--text);
+}
+
+.city-page-card p,
+.city-link-card p {
+  margin: 0.75rem 0 0;
+  color: var(--text-soft);
+  line-height: 1.55;
+}
+
+.city-link-card {
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.city-link-card:hover,
+.city-link-card:focus-visible {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 0 0 1px rgba(27, 27, 29, 0.05),
+    0 18px 28px rgba(27, 27, 29, 0.08);
 }
 
 .converter-sections {
@@ -1378,7 +1819,10 @@ input {
   .steps-grid,
   .window-grid,
   .regional-grid,
-  .related-grid {
+  .related-grid,
+  .city-pages-grid,
+  .city-page-grid,
+  .city-links-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1416,7 +1860,9 @@ input {
   .calculator-results,
   .metrics-grid,
   .faq-panel,
-  .market-row {
+  .market-row,
+  .calendar-summary-grid,
+  .city-time-shell {
     grid-template-columns: 1fr;
   }
 
@@ -1436,6 +1882,15 @@ input {
 
   .hub-grid {
     grid-template-columns: 1fr;
+  }
+
+  .calendar-grid {
+    gap: 0.4rem;
+  }
+
+  .city-time-hero {
+    min-height: auto;
+    padding: 1.25rem 0 1.6rem;
   }
 
   .comparison-tags {
@@ -1493,8 +1948,29 @@ input {
   .steps-grid,
   .window-grid,
   .regional-grid,
-  .related-grid {
+  .related-grid,
+  .city-pages-grid,
+  .city-page-grid,
+  .city-links-grid {
     grid-template-columns: 1fr;
+  }
+
+  .calendar-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .holiday-country-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .holiday-item {
+    grid-template-columns: 1fr;
+  }
+
+  .calendar-grid {
+    gap: 0.3rem;
   }
 
   .feature-visual {
@@ -1511,7 +1987,9 @@ input {
   .page-hero,
   .briefs-card,
   .aside-card,
-  .converter-block {
+  .converter-block,
+  .city-page-block,
+  .city-page-teaser {
     padding: 1.2rem;
   }
 
